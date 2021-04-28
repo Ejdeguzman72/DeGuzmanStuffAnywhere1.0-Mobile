@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'black',
         fontFamily: 'monospace',
-        fontSize: 15
+        fontSize: 15,
+        justifyContent: 'center'
     },
     row: {
         padding: 10

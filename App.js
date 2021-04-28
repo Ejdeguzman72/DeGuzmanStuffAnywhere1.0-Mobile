@@ -38,6 +38,8 @@ import BlackEyedPeasScreen from './components/recipes/recipe-screens/recipes/slo
 import PulledPorkScreen from './components/recipes/recipe-screens/recipes/slow-cooker/PulledPorkScreen';
 import StuffedGreenPeppersScreen from './components/recipes/recipe-screens/recipes/slow-cooker/StuffedGreenPeppers';
 import PotRoastScreen from './components/recipes/recipe-screens/recipes/slow-cooker/PotRoastScreen';
+import SalmonHeadSinigangScreen from './components/recipes/recipe-screens/recipes/filipino/SalmonHeadSinigangScreen';
+import ChickenCurryScreen from './components/recipes/recipe-screens/recipes/filipino/ChickenCurryScreen';
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -83,6 +85,8 @@ function App() {
         <Stack.Screen name="Pecan Pie" component={PecanPieScreen} />
 
         <Stack.Screen name="Filipino Recipes" component={FilipinoRecipesScreen} />
+        <Stack.Screen name="Salmon Head Sinigang" component={SalmonHeadSinigangScreen} />
+        <Stack.Screen name="Chicken Curry" component={ChickenCurryScreen} />
 
         <Stack.Screen name="Hispanic Recipes" component={HispanicRecipesScreen} />
         <Stack.Screen name="Fajitas" component={FajitasScreen} />

@@ -19,7 +19,7 @@ const BookList = (props) => {
         <ScrollView>
             <View style={styles.table}>
                 {book &&
-                    book.map((book, index) => {
+                    book.map((book, index) => (
                         <ListItem style={styles.container} key={book.book_id} avatar>
                             <Left>
 
@@ -32,7 +32,7 @@ const BookList = (props) => {
                                 <Icon name="heart" style={{ paddingRight: 5, fontSize: 30 }} />
                             </Right>
                         </ListItem>
-                    })}
+                    ))}
             </View>
         </ScrollView>
     )
