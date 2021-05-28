@@ -2,9 +2,10 @@ import * as React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './components/home/HomeScreen';
 import DetailsScreen from './components/details/DetailsScreen';
+import FinanceScreen from './components/finance/FinanceScreen';
+import AutoFinanceScreen from './components/finance/auto/AutoFinanceScreen';
 import RecipeScreen from './components/recipes/RecipeScreen';
 import ContactInfoScreen from './components/contact-info/ContactInfoScreen';
 import LoginScreen from './components/login/LoginScreen';
@@ -40,6 +41,9 @@ import StuffedGreenPeppersScreen from './components/recipes/recipe-screens/recip
 import PotRoastScreen from './components/recipes/recipe-screens/recipes/slow-cooker/PotRoastScreen';
 import SalmonHeadSinigangScreen from './components/recipes/recipe-screens/recipes/filipino/SalmonHeadSinigangScreen';
 import ChickenCurryScreen from './components/recipes/recipe-screens/recipes/filipino/ChickenCurryScreen';
+import GeneralFinanceScreen from './components/finance/general/GeneralFinanceScreen';
+import MedicalFinanceScreen from './components/finance/medical/MedicalFinanceScreen';
+import MusicScreen from './components/music/MusicScreen';
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -47,16 +51,26 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
 
-        {/* <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} /> */}
+        <Stack.Screen name="Login" component={LoginScreen} />
+        {/* <Stack.Screen name="Register" component={RegisterScreen} /> */}
 
         <Stack.Screen name="Home" component={HomeScreen} />
 
         <Stack.Screen name="Books" component={BookRecommendationScreen} />
 
         <Stack.Screen name="Details" component={DetailsScreen} />
+
+        <Stack.Screen name="Finance" component={FinanceScreen} />
+
+        <Stack.Screen name="Auto Finance" component={AutoFinanceScreen} />
+
+        <Stack.Screen name="General Finance" component={GeneralFinanceScreen} />
+
+        <Stack.Screen name="Medical Finance" component={MedicalFinanceScreen} />
+
+        <Stack.Screen name="Music" component={MusicScreen} />
 
         <Stack.Screen name="Restaurants" component={RestaurantRecommendationScreen} />
 

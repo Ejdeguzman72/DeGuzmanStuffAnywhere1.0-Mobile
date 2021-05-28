@@ -26,7 +26,7 @@ const BookList = (props) => {
                             </Left>
                             <Body>
                                 <Text>{`${book.name}`}</Text>
-                                <Text note>{`${book.author}`}</Text>
+                                <Text>{`${book.author}`}</Text>
                             </Body>
                             <Right style={{ justifyContent: 'center' }}>
                                 <Icon name="heart" style={{ paddingRight: 5, fontSize: 30 }} />

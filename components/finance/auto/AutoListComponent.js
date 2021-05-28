@@ -2,38 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { Button, ScrollView, StyleSheet, Text, View, Modal, Pressable, Alert } from 'react-native';
 import { Card, Paragraph, Title, Divider } from 'react-native-paper';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Icon } from 'native-base';
-import AddContactModal from './add-contact-info/AddContactModal';
-import ContactService from '../../services/contact-info-service';
+import Axios from 'axios';
 
-const ContactInfoList = (props) => {
-    const [contact, setContact] = useState([]);
+const AutoListComponent = (props) => {
+    const [autoTransaction, setAutoTransaction] = useState([]);
 
     useEffect(() => {
-        fetch('http://ec2-54-162-1-238.compute-1.amazonaws.com:8080/app/person-info/all')
+        fetch('http://ec2-54-162-1-238.compute-1.amazonaws.com:8080/app/auto-transactions/all')
             .then((response) => response.json())
-            .then((json) => setContact(json))
+            .then((json) => setAutoTransaction(json))
             .catch((error) => console.log(error))
-    }, []);
+    }, [])
 
-    console.log(contact);
+    console.log(autoTransaction);
 
     return (
         <ScrollView>
             <View style={styles.table}>
-                {contact &&
-                    contact.map((contact, index) => (
+                {autoTransaction &&
+                    autoTransaction.map((autoTransaction, index) => (
                         // <View style={styles.container}>
                         //     <Text style={styles.row}>{contact.firstname + ' ' + contact.lastname}</Text>
                         //     <Text style={styles.row}>{contact.phone}</Text>
                         //     <Divider />
                         // </View>
-                        <ListItem style={styles.container} key={contact.contactid} avatar>
+                        <ListItem style={styles.container} key={autoTransaction.auto_transaction_id} avatar>
                             <Left>
-                                
+
                             </Left>
                             <Body>
-                                <Text>{`${contact.firstname} ${contact.lastname}`}</Text>
-                                <Text note>{`${contact.phone}`}</Text>
+                                <Text>{`${autoTransaction.person} ${autoTransaction.autoTransactionDate}`}</Text>
+                                <Text note>{`${autoTransaction.amount} ${autoTransaction.transactionType}`}</Text>
                             </Body>
                             <Right style={{ justifyContent: 'center' }}>
                                 <Icon name="heart" style={{ paddingRight: 5, fontSize: 30 }} />
@@ -73,5 +72,4 @@ const styles = StyleSheet.create({
     }
 })
 
-
-export default ContactInfoList;
+export default AutoListComponent;

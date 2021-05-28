@@ -8,71 +8,59 @@ import { Card, Paragraph, Title, Divider } from 'react-native-paper';
 import { event } from 'react-native-reanimated';
 import Axios from 'axios';
 
-export default class AddContactModal extends React.Component {
+export default class AddBookModalComponent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            person_id: 0,
-            firstname: "",
-            lastname: "",
-            email: "",
-            phone: "",
-            birthdate: "",
+            book_id: 0,
+            name: "",
+            author: "",
+            descr: "",
             modalVisible: false,
             submitted: false
         };
 
-        // this.onHandleEmailChange = this.onHandleEmailChange(this);
-        // this.onHandleFirstNameChange = this.onHandleFirstNameChange(this);
-        // this.onHandleLastNameChange = this.onHandleLastNameChange(this);
-        // this.onHandlePhoneChange = this.onHandlePhoneChange(this);
-        // this.onhandleBirthdateChange = this.onhandleBirthdateChange(this);
-        // this.newContact = this.newContact(this);
-        // this.onSubmit = this.onSubmit.bind(this);
+        this.onHandleTitleChange = this.onHandleTitleChange.bind(this);
+        this.onHandleAuthorChange = this.onHandleAuthorChange.bind(this);
+        this.onHandleDescrChange = this.onHandleDescrChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    newContact = () => {
+    newBook = () => {
         this.setState({
-            person_id: 0,
-            firstname: "",
-            lastname: "",
-            email: "",
-            phone: "",
-            birthdate: "",
+            book_id: 0,
+            name: "",
+            author: "",
+            descr: "",
+            modalVisible: false,
             submitted: false
         })
     }
 
-    onHandleFirstNameChange = (input) => {
+    onHandleTitleChange = (input) => {
         this.setState({
-            firstname: input
+            name: input
         });
     }
 
-    onHandleLastNameChange = (input) => {
+    onHandleAuthorChange = (input) => {
         this.setState({
-            lastname: input
-        })
-    }
-
-    onHandleEmailChange = (input) => {
-        this.setState({
-            email: input
+            author: input
         });
     }
 
-    onHandlePhoneChange = (input) => {
+    onHandleDescrChange = (input) => {
         this.setState({
-            phone: input
+            descr: input
         });
     }
 
-    onhandleBirthdateChange = (input) => {
-        this.setState({
-            birthdate: input
-        })
-    }
+    // handleInputChange = (input) => {
+    //     this.setState({
+    //         [event.target.name]: event.target.value
+    //     })
+    // }
 
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
@@ -81,18 +69,16 @@ export default class AddContactModal extends React.Component {
     onSubmit = async (event) => {
 
         const data = {
-            person_id: this.state.person_id,
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            email: this.state.email,
-            birthdate: this.state.birthdate,
-            phone: this.state.phone
+            book_id: this.state.book_id,
+            name: this.state.name,
+            author: this.state.author,
+            descr: this.state.descr
         }
 
         event.preventDefault();
 
         try {
-            const response = await fetch('http://ec2-54-162-1-238.compute-1.amazonaws.com:8080/app/person-info/add-person-information', {
+            const response = await fetch('http://ec2-54-162-1-238.compute-1.amazonaws.com:8080/app/books/add-book-information', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -101,14 +87,11 @@ export default class AddContactModal extends React.Component {
                 body: JSON.stringify(this.state)
             });
             const json = await response.json();
-            console.log(json);
             return this.setState({
-                person_id: json.person_id,
-                firstname: json.firstname,
-                lastname: json.lastname,
-                email: json.email,
-                phone: json.phone,
-                birthdate: json.birthdate,
+                book_id: json.book_id,
+                name: json.name,
+                author: json.author,
+                descr: json.descr,
                 submitted: true
             });
         } catch (error) {
@@ -133,11 +116,11 @@ export default class AddContactModal extends React.Component {
                     {this.state.submitted ? (
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
-                                <Text style={styles.modalText}>Add Contact</Text>
-                                <Text>{this.state.firstname}  {this.state.lastname} has been submitted!`</Text>
+                                <Text style={styles.modalText}>Add Book</Text>
+                                <Text>{this.state.name} has been submitted!</Text>
                                 <Pressable
                                     style={[styles.modalButton, styles.buttonClose]}
-                                    onPress={this.newContact}
+                                    onPress={this.newBook}
                                 >
                                     <Text style={styles.textStyle}>Add </Text>
                                 </Pressable>
@@ -152,37 +135,26 @@ export default class AddContactModal extends React.Component {
                     ) : (
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
-                                <ImageBackground source={require('../../../assets/modal.jpg')} style={styles.image} >
-                                    <Text style={styles.modalText}>Add Contact</Text>
+                                <ImageBackground source={require('../../assets/modal.jpg')} style={styles.image} >
+                                    <Text style={styles.modalText}>Add Book</Text>
                                     <TextInput
                                         style={styles.input}
-                                        placeholder="Enter First Name"
-                                        value={this.state.firstname}
-                                        onChangeText={this.onHandleFirstNameChange}
+                                        placeholder="Enter Title"
+                                        value={this.state.name}
+                                        // onChangeText={(event) => this.onHandleTitleChange(event)}
+                                        onChangeText={this.onHandleTitleChange}
                                     />
                                     <TextInput
                                         style={styles.input}
-                                        placeholder="Enter Last Name"
-                                        value={this.state.lastname}
-                                        onChangeText={this.onHandleLastNameChange}
+                                        placeholder="Enter Author"
+                                        value={this.state.author}
+                                        onChangeText={this.onHandleAuthorChange}
                                     />
                                     <TextInput
                                         style={styles.input}
-                                        placeholder="Enter Email"
-                                        value={this.state.email}
-                                        onChangeText={this.onHandleEmailChange}
-                                    />
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Enter Phone"
-                                        value={this.state.phone}
-                                        onChangeText={this.onHandlePhoneChange}
-                                    />
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Enter Birthdate"
-                                        value={this.state.birthdate}
-                                        onChangeText={this.onhandleBirthdateChange}
+                                        placeholder="Enter Summary"
+                                        value={this.state.descr}
+                                        onChangeText={this.onHandleDescrChange}
                                     />
                                     <Pressable
                                         style={[styles.modalButton, styles.buttonClose]}
@@ -207,7 +179,7 @@ export default class AddContactModal extends React.Component {
                     style={[styles.button, styles.buttonOpen]}
                     onPress={() => this.setModalVisible(true)}
                 >
-                    <Text style={styles.textStyle}>Add Contact Info</Text>
+                    <Text style={styles.textStyle}>Add Book</Text>
                 </Pressable>
             </View>
         )
@@ -226,6 +198,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: '#2c3e50',
         borderWidth: 5,
+        // height: 550,
+        // width: 450,
         // padding: 35,
         alignItems: "center",
         shadowColor: "black",
