@@ -15,7 +15,7 @@ const MusicScreen = () => {
                     </View>
                 </View>
                 <View>
-                    {/* <MusicListComponent /> */}
+                    <MusicListComponent />
                 </View>
             </ImageBackground>
         </View>

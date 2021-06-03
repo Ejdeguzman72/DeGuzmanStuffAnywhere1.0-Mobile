@@ -31,51 +31,53 @@ export default class AddMedicalTransactionModalComponent extends React.Component
                     >
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
-                                <Text style={styles.modalText}>Add Medical Info</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Enter Person"
-                                // onChangeText={handleInputChange}
-                                // value={contactInfo.firstname}
-                                />
-                                <TextInput
-                                    style={styles.input}
+                                <ImageBackground source={require('../../../assets/modal.jpg')} style={styles.image} >
+                                    <Text style={styles.modalText}>Add Medical Info</Text>
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Enter Person"
                                     // onChangeText={handleInputChange}
-                                    // value={contactInfo.lastname}
-                                    placeholder="Enter Transaction Date"
-                                // keyboardType="numeric"
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Enter Amount"
-                                // onChangeText={handleInputChange}
-                                // value={contactInfo.birthdate}
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Enter Transaction Type"
-                                // onChangeText={handleInputChange}
-                                // value={contactInfo.email}
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    // secureTextEntry={true}
+                                    // value={contactInfo.firstname}
+                                    />
+                                    <TextInput
+                                        style={styles.input}
+                                        // onChangeText={handleInputChange}
+                                        // value={contactInfo.lastname}
+                                        placeholder="Enter Transaction Date"
+                                    // keyboardType="numeric"
+                                    />
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Enter Amount"
                                     // onChangeText={handleInputChange}
-                                    // value={contactInfo.phone}
-                                    placeholder="Enter Shop Name"
-                                />
-                                <Pressable
-                                    style={[styles.modalButton, styles.buttonClose]}
-                                    onPress={() => this.setModalVisible(!modalVisible)}
-                                >
-                                    <Text style={styles.textStyle}>Submit</Text>
-                                </Pressable>
-                                <Pressable
-                                    style={[styles.modalButton, styles.buttonClose]}
-                                    onPress={() => this.setModalVisible(!modalVisible)}
-                                >
-                                    <Text style={styles.textStyle}>Close </Text>
-                                </Pressable>
+                                    // value={contactInfo.birthdate}
+                                    />
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Enter Transaction Type"
+                                    // onChangeText={handleInputChange}
+                                    // value={contactInfo.email}
+                                    />
+                                    <TextInput
+                                        style={styles.input}
+                                        // secureTextEntry={true}
+                                        // onChangeText={handleInputChange}
+                                        // value={contactInfo.phone}
+                                        placeholder="Enter Shop Name"
+                                    />
+                                    <Pressable
+                                        style={[styles.modalButton, styles.buttonClose]}
+                                        onPress={() => this.setModalVisible(!modalVisible)}
+                                    >
+                                        <Text style={styles.textStyle}>Submit</Text>
+                                    </Pressable>
+                                    <Pressable
+                                        style={[styles.modalButton, styles.buttonClose]}
+                                        onPress={() => this.setModalVisible(!modalVisible)}
+                                    >
+                                        <Text style={styles.textStyle}>Close </Text>
+                                    </Pressable>
+                                </ImageBackground>
                             </View>
                         </View>
                     </Modal>
@@ -102,7 +104,8 @@ const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
-        padding: 35,
+        borderColor: 'black',
+        borderWidth: 5,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -120,7 +123,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     modalButton: {
-        width: 200,
+        // width: 200,
         borderRadius: 20,
         padding: 10,
         margin: 10

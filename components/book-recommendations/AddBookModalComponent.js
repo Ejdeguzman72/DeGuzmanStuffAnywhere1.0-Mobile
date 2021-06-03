@@ -114,10 +114,13 @@ export default class AddBookModalComponent extends React.Component {
                 >
 
                     {this.state.submitted ? (
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
+                        <View style={styles.addCenteredView}>
+                            <View style={styles.addModalView}>
                                 <Text style={styles.modalText}>Add Book</Text>
-                                <Text>{this.state.name} has been submitted!</Text>
+                                <Text style={styles.descriptionSize}>Title: {this.state.name}</Text>
+                                <Text style={styles.descriptionSize}>Author: {this.state.author}</Text>
+                                <Text style={styles.descriptionSize}>Summary: {this.state.descr}</Text>
+                                <Text >{this.state.name} has been submitted!</Text>
                                 <Pressable
                                     style={[styles.modalButton, styles.buttonClose]}
                                     onPress={this.newBook}
@@ -191,18 +194,22 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 20,
+        marginTop: 22
+    },
+    addCenteredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
     },
     modalView: {
         margin: 20,
+        backgroundColor: "white",
         borderRadius: 20,
-        borderColor: '#2c3e50',
         borderWidth: 5,
-        // height: 550,
-        // width: 450,
         // padding: 35,
         alignItems: "center",
-        shadowColor: "black",
+        shadowColor: "#000",
         shadowOffset: {
             width: 100,
             height: 10
@@ -211,6 +218,28 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
+    addModalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        borderWidth: 5,
+        // padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 100,
+            height: 10
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        height: 300,
+        width: 300,
+        fontSize: 20
+    },
+    descriptionSize: {
+        fontSize: 30
+    },
     button: {
         borderRadius: 20,
         padding: 10,
@@ -218,35 +247,31 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     modalButton: {
-        // width: 400,
+        // width: 200,
         borderRadius: 20,
         padding: 10,
-        margin: 10,
-    },
-    submittedAddModalButton: {
-        width: 200,
-        borderRadius: 20
+        margin: 10
     },
     input: {
         height: 40,
         margin: 12,
         borderWidth: 1,
-        backgroundColor: '#fefefa',
+        backgroundColor: 'white',
         textAlign: 'center',
         fontSize: 25,
-        width: 300
+        width: 300,
+        borderRadius: 10
     },
     image: {
-        flex: 2,
+        // flex: 2,
         resizeMode: "cover",
-        margin: 0,
-        width: 'auto'
     },
     buttonOpen: {
         backgroundColor: "black",
     },
     buttonClose: {
         backgroundColor: "black",
+        width: 300
     },
     textStyle: {
         color: "white",

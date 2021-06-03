@@ -7,72 +7,15 @@ import RestaurantList from './RestaurantList';
 
 const RestaurantRecommendationScreen = () => {
 
-    const [restaurantModal, setRestaurantModal] = useState(false);
-
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image} >
-                {/* <AddRestaurantModal /> */}
-                <Modal visible={restaurantModal} animationType='fade'>
-                    <View style={styles.modalContent}>
-                        <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image} >
-                            <MaterialIcons
-                                name="close"
-                                size={36}
-                                style={{ ...styles.modalToggle, ...styles.modalClose }}
-                                onPress={() => setRestaurantModal(false)}
-                            />
-                            <Text style={styles.modalTitle}>Add Restaurant Info</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Enter Restaurant Name"
-                            // onChangeText={onChangeText}
-                            // value={text}
-                            />
-                            <TextInput
-                                style={styles.input}
-                                // onChangeText={onChangeNumber}
-                                // value={number}
-                                placeholder="Enter Address"
-                            // keyboardType="numeric"
-                            />
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Enter City"
-                            // onChangeText={onChangeText}
-                            // value={text}
-                            />
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Enter State"
-                            // onChangeText={onChangeText}
-                            // value={text}
-                            />
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Enter Zip"
-                            // onChangeText={onChangeText}
-                            // value={text}
-                            />
-                            <View style={styles.bookSubmitButton}>
-                                <Button
-                                    title='Submit'
-                                    color='black'
-                                    onPress={() => console.log('Book Info submitted')}
-                                />
-                            </View>
-                        </ImageBackground>
-                    </View>
-                </Modal>
-
-                <View style={styles.modalToggle}>
-                    <Button
-                        title='Add Restaurant Information'
-                        color='black'
-                        onPress={() => setRestaurantModal(true)}
-                    />
+                <View>
+                    <AddRestaurantModal />
                 </View>
-                <RestaurantList />
+                <View>
+                    <RestaurantList />
+                </View>
             </ImageBackground>
         </View>
     )

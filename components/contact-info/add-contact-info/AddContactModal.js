@@ -108,7 +108,7 @@ export default class AddContactModal extends React.Component {
                 lastname: json.lastname,
                 email: json.email,
                 phone: json.phone,
-                birthdate: json.birthdate,
+                birthdate: json.birthdate, 
                 submitted: true
             });
         } catch (error) {
@@ -134,6 +134,11 @@ export default class AddContactModal extends React.Component {
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
                                 <Text style={styles.modalText}>Add Contact</Text>
+                                <Text>First Name: {this.state.firstname}</Text>
+                                <Text>Last Name: {this.state.lastname}</Text>
+                                <Text>Email: {this.state.email}</Text>
+                                <Text>Phone: {this.state.phone}</Text>
+                                <Text>Date of Birth: {this.state.birthdate}</Text>
                                 <Text>{this.state.firstname}  {this.state.lastname} has been submitted!`</Text>
                                 <Pressable
                                     style={[styles.modalButton, styles.buttonClose]}
@@ -219,16 +224,16 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 20,
+        marginTop: 22
     },
     modalView: {
         margin: 20,
+        backgroundColor: "white",
         borderRadius: 20,
-        borderColor: '#2c3e50',
         borderWidth: 5,
         // padding: 35,
         alignItems: "center",
-        shadowColor: "black",
+        shadowColor: "#000",
         shadowOffset: {
             width: 100,
             height: 10
@@ -244,29 +249,24 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     modalButton: {
-        // width: 400,
+        // width: 200,
         borderRadius: 20,
         padding: 10,
-        margin: 10,
-    },
-    submittedAddModalButton: {
-        width: 200,
-        borderRadius: 20
+        margin: 10
     },
     input: {
         height: 40,
         margin: 12,
         borderWidth: 1,
-        backgroundColor: '#fefefa',
+        backgroundColor: 'white',
         textAlign: 'center',
         fontSize: 25,
-        width: 300
+        width: 300,
+        borderRadius: 10
     },
     image: {
-        flex: 2,
+        // flex: 2,
         resizeMode: "cover",
-        margin: 0,
-        width: 'auto'
     },
     buttonOpen: {
         backgroundColor: "black",

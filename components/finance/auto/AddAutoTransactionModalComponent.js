@@ -193,7 +193,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         textAlign: 'center',
         fontSize: 25,
-        width: 300
+        width: 300,
+        borderRadius: 10
     },
     image: {
         // flex: 2,

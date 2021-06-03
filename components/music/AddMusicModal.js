@@ -41,7 +41,7 @@ export default class AddMusicModal extends React.Component {
         })
     }
 
-    onSubmit = (event) => {
+    onSubmit = async (event) => {
 
         const data = {
             song_id: this.state.song_id,
@@ -53,7 +53,7 @@ export default class AddMusicModal extends React.Component {
         event.preventDefault();
 
         try {
-            const response = fetch('http://ec2-54-162-1-238.compute-1.amazonaws.com:8080/app/music/add-music', {
+            const response = await fetch('http://ec2-54-162-1-238.compute-1.amazonaws.com:8080/app/music/add-music', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -61,7 +61,8 @@ export default class AddMusicModal extends React.Component {
                 },
                 body: JSON.stringify(this.state)
             });
-            const json = response.json();
+            console.log(json);
+            const json = await response.json();
             return this.setState({
                 song_id: json.song_id,
                 title: json.title,
@@ -95,7 +96,7 @@ export default class AddMusicModal extends React.Component {
                                     <Text>{this.state.title} has been submitted!</Text>
                                     <Pressable
                                         style={[styles.modalButton, styles.buttonClose]}
-                                        onPress={this.newBook}
+                                        // onPress={this.newBook}
                                     >
                                         <Text style={styles.textStyle}>Add </Text>
                                     </Pressable>
@@ -202,7 +203,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         textAlign: 'center',
         fontSize: 25,
-        width: 300
+        width: 300,
+        borderRadius: 10
     },
     image: {
         // flex: 2,
