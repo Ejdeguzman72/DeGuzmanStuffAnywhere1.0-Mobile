@@ -17,7 +17,7 @@ const RestaurantList = (props) => {
 
     
 
-    console.log(restaurant);
+    console.log(restaurant.restaurantType + "fsldkjflksdjflksjdflksdjflksdjf");
 
     return (
         <ScrollView>
@@ -36,6 +36,7 @@ const RestaurantList = (props) => {
                             <Body>
                                 <Text>{`${restaurant.name} `}</Text>
                                 <Text note>{`${restaurant.address} ${restaurant.city}, ${restaurant.state} ${restaurant.zip}`}</Text>
+                                <Text>{`${restaurant.restaurantType}`}</Text>
                             </Body>
                             <Right style={{ justifyContent: 'center' }}>
                                 <Icon name="heart" style={{ paddingRight: 5, fontSize: 30 }} />

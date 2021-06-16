@@ -136,5 +136,8 @@ const styles = StyleSheet.create({
 },
   cardCoverImg: {
     margin: 10
+  },
+  button: {
+    borderRadius: 25
   }
 });

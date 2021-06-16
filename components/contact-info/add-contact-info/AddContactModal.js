@@ -3,10 +3,7 @@ import { Image } from 'native-base';
 import React, { useState } from 'react';
 import { EventEmitter, Pressable } from 'react-native';
 import { Alert } from 'react-native';
-import { ImageBackground, ScrollView, StyleSheet, Text, View, Modal, TextInput, Button } from 'react-native';
-import { Card, Paragraph, Title, Divider } from 'react-native-paper';
-import { event } from 'react-native-reanimated';
-import Axios from 'axios';
+import { ImageBackground, ScrollView, StyleSheet, Text, View, Modal, TextInput, Button, Picker } from 'react-native';
 
 export default class AddContactModal extends React.Component {
     constructor(props) {
@@ -18,7 +15,7 @@ export default class AddContactModal extends React.Component {
             lastname: "",
             email: "",
             phone: "",
-            birthdate: "",
+            birthdate: new Date(),
             modalVisible: false,
             submitted: false
         };
@@ -176,18 +173,21 @@ export default class AddContactModal extends React.Component {
                                         placeholder="Enter Email"
                                         value={this.state.email}
                                         onChangeText={this.onHandleEmailChange}
+                                        keyboardType="email-address"
                                     />
                                     <TextInput
                                         style={styles.input}
                                         placeholder="Enter Phone"
                                         value={this.state.phone}
                                         onChangeText={this.onHandlePhoneChange}
+                                        keyboardType="phone-pad"
                                     />
                                     <TextInput
                                         style={styles.input}
-                                        placeholder="Enter Birthdate"
+                                        placeholder="Birthdate (YYYY-MM-DD)"
                                         value={this.state.birthdate}
                                         onChangeText={this.onhandleBirthdateChange}
+                                        // keyboardType="numeric"
                                     />
                                     <Pressable
                                         style={[styles.modalButton, styles.buttonClose]}

@@ -3,7 +3,7 @@ import { Image } from 'native-base';
 import React, { useState } from 'react';
 import { EventEmitter, Pressable } from 'react-native';
 import { Alert } from 'react-native';
-import { ImageBackground, ScrollView, StyleSheet, Text, View, Modal, TextInput, Button } from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, Text, View, Modal, TextInput, Button, Picker } from 'react-native';
 import { Card, Paragraph, Title, Divider } from 'react-native-paper';
 import { event } from 'react-native-reanimated';
 import Axios from 'axios';
@@ -77,6 +77,7 @@ export default class AddMusicModal extends React.Component {
 
     render() {
         const { modalVisible } = this.state
+
         return (
             <View >
                 <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image} >
@@ -90,15 +91,15 @@ export default class AddMusicModal extends React.Component {
                     // }}
                     >
                         {this.state.submitted ? (
-                            <View style={styles.centeredView}>
-                                <View style={styles.modalView}>
-                                    <Text style={styles.modalText}>Add Song</Text>
+                            <View style={styles.addCenteredView}>
+                                <View style={styles.addModalView}>
+                                    <Text style={styles.modalText}>Add Book</Text>
                                     <Text>{this.state.title} has been submitted!</Text>
                                     <Pressable
                                         style={[styles.modalButton, styles.buttonClose]}
-                                        // onPress={this.newBook}
+                                    // onPress={this.newBook}
                                     >
-                                        <Text style={styles.textStyle}>Add </Text>
+                                        <Text style={styles.textStyle}>Add</Text>
                                     </Pressable>
                                     <Pressable
                                         style={[styles.modalButton, styles.buttonClose]}
@@ -112,7 +113,7 @@ export default class AddMusicModal extends React.Component {
                             <View style={styles.centeredView}>
                                 <View style={styles.modalView}>
                                     <ImageBackground source={require('../../assets/modal.jpg')} style={styles.image} >
-                                        <Text style={styles.modalText}>Add Book</Text>
+                                        <Text style={styles.modalText}>Add Music</Text>
                                         <TextInput
                                             style={styles.input}
                                             placeholder="Enter Title"
@@ -126,12 +127,32 @@ export default class AddMusicModal extends React.Component {
                                             value={this.state.artist}
                                             onChangeText={this.onHandleArtistChange}
                                         />
-                                        <TextInput
-                                            style={styles.input}
-                                            placeholder="Enter Genre"
-                                            value={this.state.genre}
-                                            onChangeText={this.onHandleGenreChange}
-                                        />
+                                        <View style={styles.pickerView}>
+                                            <Picker
+                                                style={styles.pickerstyles}
+                                                selectedValue={this.state.genre}
+                                                onValueChange={(
+                                                    itemValue, itemPosition
+                                                ) => this.setState({
+                                                    genre: itemValue, choosenIndex: itemPosition
+                                                })}
+                                            >
+                                                <Picker.Item label="Select a Genre" value="Selet a Genre" value="disabled" />
+                                                <Picker.Item label="Rock" value="Rock" />
+                                                <Picker.Item label="Pop" value="Pop" />
+                                                <Picker.Item label="Country" value="Country" />
+                                                <Picker.Item label="Classical" value="Classical" />
+                                                <Picker.Item label="Electronic" value="Electronic" />
+                                                <Picker.Item label="LoFi Beats" value="LoFi Beats" />
+                                                <Picker.Item label="Metal" value="Metal" />
+                                                <Picker.Item label="Rap" value="Rap" />
+                                                <Picker.Item label="Hip Hop" value="Hip Hop" />
+                                                <Picker.Item label="R&B" value="R&B" />
+                                                <Picker.Item label="Jazz" value="Jazz" />
+                                                <Picker.Item label="Indie" value="Indie" />
+                                                <Picker.Item label="Blues" value="Blues" />
+                                            </Picker>
+                                        </View>
                                         <Pressable
                                             style={[styles.modalButton, styles.buttonClose]}
                                             onPress={(event) => this.onSubmit(event)}
@@ -168,6 +189,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22
     },
+    addCenteredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
     modalView: {
         margin: 20,
         backgroundColor: "white",
@@ -183,6 +210,28 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5
+    },
+    addModalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        borderWidth: 5,
+        // padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 100,
+            height: 10
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        height: 300,
+        width: 300,
+        fontSize: 20
+    },
+    descriptionSize: {
+        fontSize: 30
     },
     button: {
         borderRadius: 20,
@@ -215,6 +264,7 @@ const styles = StyleSheet.create({
     },
     buttonClose: {
         backgroundColor: "black",
+        width: 300
     },
     textStyle: {
         color: "white",
@@ -225,5 +275,23 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: "center",
         fontSize: 30
+    },
+    pickerstyles: {
+        width: 300,
+        textAlign: 'center',
+        margin: 10,
+        backgroundColor: 'white',
+        fontSize: 50
+    },
+    pickerView: {
+        backgroundColor: 'white',
+        borderRadius: 20,
+        width: 350,
+        textAlign: 'center',
+        fontSize: 50,
+        width: 300,
+        margin: 10,
+        borderColor: 'black',
+        borderWidth: 1
     }
 });

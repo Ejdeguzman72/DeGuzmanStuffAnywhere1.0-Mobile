@@ -33,7 +33,7 @@ export default class AddBookModalComponent extends React.Component {
             name: "",
             author: "",
             descr: "",
-            modalVisible: false,
+            // modalVisible: false,
             submitted: false
         })
     }
@@ -158,6 +158,8 @@ export default class AddBookModalComponent extends React.Component {
                                         placeholder="Enter Summary"
                                         value={this.state.descr}
                                         onChangeText={this.onHandleDescrChange}
+                                        multiline={true}
+                                        numberOfLines={4}
                                     />
                                     <Pressable
                                         style={[styles.modalButton, styles.buttonClose]}
