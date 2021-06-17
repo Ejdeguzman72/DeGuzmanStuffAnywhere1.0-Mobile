@@ -48,10 +48,6 @@ export default function LoginScreen({ navigation }) {
       })
   }
 
-  const signOut = () => {
-    AsyncStorage.removeItem(token);
-  }
-
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image} >

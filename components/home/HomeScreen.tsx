@@ -18,12 +18,28 @@ export default function HomeScreen({ navigation }) {
   return (
     <ScrollView style={styles.container} >
       <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image}>
-      <Pressable
-          style={[styles.modalButton, styles.buttonClose]}
-          onPress={logoutUser}
-        >
-          <Text style={styles.textStyle}>Logout</Text>
-        </Pressable>
+        <View>
+          <View style={styles.titleContainer}>
+            <View>
+              <Text style={styles.title}>DeGuzmanStuffAnywhere</Text>
+            </View>
+            <View>
+              {
+                jwt ? 
+                  <Pressable
+                    style={styles.modalButton}
+                    onPress={logoutUser}
+                  >
+                    <Text 
+                    style={styles.textStyle}
+                    >
+                      Logout
+                    </Text>
+                  </Pressable> : null
+              }
+            </View>
+          </View>
+        </View>
         {
           jwt ?
             <View style={styles.card}>
@@ -61,73 +77,73 @@ export default function HomeScreen({ navigation }) {
         <Divider />
 
         {
-          jwt ? 
-          <View style={styles.card}>
-            <Card style={styles.boxWithShadow}>
-              <Card.Title title="Finance" subtitle="Family Finances" />
-              <Card.Content>
-                <Button
-                  color='rgb(40,44,53)' title="Finance Information" onPress={() => navigation.navigate('Finance')}
-                />
-              </Card.Content>
-              <Card.Cover source={require('../../assets/home-screen-pics/finance.jpg')} style={styles.cardCoverImg} />
+          jwt ?
+            <View style={styles.card}>
+              <Card style={styles.boxWithShadow}>
+                <Card.Title title="Finance" subtitle="Family Finances" />
+                <Card.Content>
+                  <Button
+                    color='rgb(40,44,53)' title="Finance Information" onPress={() => navigation.navigate('Finance')}
+                  />
+                </Card.Content>
+                <Card.Cover source={require('../../assets/home-screen-pics/finance.jpg')} style={styles.cardCoverImg} />
 
-            </Card>
-          </View> : null
+              </Card>
+            </View> : null
         }
 
         <Divider />
 
         {
-          jwt ? 
-          <View style={styles.card}>
-            <Card style={styles.boxWithShadow}>
-              <Card.Title title="Music" subtitle="Music Recommendations" />
-              <Card.Content>
-                <Button
-                  color='rgb(40,44,53)' title="Music" onPress={() => navigation.navigate('Music')}
-                />
-              </Card.Content>
-              <Card.Cover source={require('../../assets/home-screen-pics/music.jpg')} style={styles.cardCoverImg} />
+          jwt ?
+            <View style={styles.card}>
+              <Card style={styles.boxWithShadow}>
+                <Card.Title title="Music" subtitle="Music Recommendations" />
+                <Card.Content>
+                  <Button
+                    color='rgb(40,44,53)' title="Music" onPress={() => navigation.navigate('Music')}
+                  />
+                </Card.Content>
+                <Card.Cover source={require('../../assets/home-screen-pics/music.jpg')} style={styles.cardCoverImg} />
 
-            </Card>
-          </View> : null
+              </Card>
+            </View> : null
         }
 
         <Divider />
 
         {
-          jwt ? 
-          <View style={styles.card}>
-            <Card style={styles.boxWithShadow}>
-              <Card.Title title="Recipes" subtitle="Family Recipes" />
-              <Card.Content>
-                <Button
-                  color='rgb(40,44,53)' title="Recipes" onPress={() => navigation.navigate('Recipes')}
-                />
-              </Card.Content>
-              <Card.Cover source={require('../../assets/home-screen-pics/kitchen.jpg')} style={styles.cardCoverImg} />
+          jwt ?
+            <View style={styles.card}>
+              <Card style={styles.boxWithShadow}>
+                <Card.Title title="Recipes" subtitle="Family Recipes" />
+                <Card.Content>
+                  <Button
+                    color='rgb(40,44,53)' title="Recipes" onPress={() => navigation.navigate('Recipes')}
+                  />
+                </Card.Content>
+                <Card.Cover source={require('../../assets/home-screen-pics/kitchen.jpg')} style={styles.cardCoverImg} />
 
-            </Card>
-          </View> : null
+              </Card>
+            </View> : null
         }
 
         <Divider />
 
         {
-          jwt ? 
-        <View style={styles.card}>
-          <Card style={styles.boxWithShadow}>
-            <Card.Title title="Restaurants" subtitle="Family Restaurant Recommendations" />
-            <Card.Content>
-              <Button
-                color='rgb(40,44,53)' title="Restaurants" onPress={() => navigation.navigate('Restaurants')}
-              />
-            </Card.Content>
-            <Card.Cover source={require('../../assets/home-screen-pics/images.jpeg')} style={styles.cardCoverImg} />
+          jwt ?
+            <View style={styles.card}>
+              <Card style={styles.boxWithShadow}>
+                <Card.Title title="Restaurants" subtitle="Family Restaurant Recommendations" />
+                <Card.Content>
+                  <Button
+                    color='rgb(40,44,53)' title="Restaurants" onPress={() => navigation.navigate('Restaurants')}
+                  />
+                </Card.Content>
+                <Card.Cover source={require('../../assets/home-screen-pics/images.jpeg')} style={styles.cardCoverImg} />
 
-          </Card>
-        </View> : null
+              </Card>
+            </View> : null
         }
 
         <Divider />
@@ -143,6 +159,10 @@ const styles = StyleSheet.create({
     //backgroundColor: '#fff',
     // alignItems: 'center',
     //justifyContent: 'center',
+  },
+  homeScreenTitle: {
+    borderColor: 'black',
+    borderWidth: 5
   },
   image: {
     flex: 1,
@@ -160,7 +180,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.8,
-    shadowRadius: 2,
+    shadowRadius: 10,
     elevation: 5
   },
   cardCoverImg: {
@@ -186,14 +206,20 @@ const styles = StyleSheet.create({
   titleContainer: {
     backgroundColor: 'lightblue',
     padding: 10,
-    borderRadius: 20,
-    margin: 10
+    borderRadius: 50,
+    margin: 10,
+    // width: 350,
+    height: 70,
+    flexDirection: 'row',
+    fontSize: 20,
+    borderColor: 'black',
+    alignItems: 'center'
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     color: 'black',
-    padding: 10,
-    textAlign: 'center'
+    // padding: 10,
+    // textAlign: 'center'
   },
   centeredView: {
     flex: 1,
@@ -245,15 +271,15 @@ const styles = StyleSheet.create({
   descriptionSize: {
     fontSize: 10
   },
+  modalButtonView: {
+    alignItems: 'center'
+  },
   modalButton: {
-    width: 100,
-    height: 100,
-    textAlign: 'center',
-    justifyContent: 'center',
-    borderRadius: 60,
-    padding: 10,
-    margin: 10,
-    fontSize: 20
+    // position: 'absolute',
+    backgroundColor: 'rgb(40,44,53)',
+    borderRadius: 50,
+    // height: 80,
+    margin: 10
   },
   dateInput: {
     height: 40,
@@ -274,8 +300,11 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    // fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 20,
+    margin: 10,
+    padding: 10
   },
   modalText: {
     marginBottom: 15,

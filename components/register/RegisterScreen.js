@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Alert, ImageBackground, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPasssword] = useState("");
   const [name, setName] = useState("");
@@ -34,61 +34,69 @@ const RegisterScreen = () => {
       name: name,
       email: email
     })
-    .then((response) => {
-      setSubmitted(true);
-      if (submitted) {
-        Alert.alert(
-          `${username} has been registered! Wait for admin to enable account.`
-        )
-      }
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+      .then((response) => {
+        setSubmitted(true);
+        if (submitted) {
+          Alert.alert(
+            `${username} has been registered! Wait for admin to enable account.`
+          )
+        }
+        navigation.navigate('Login');
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image} >
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Username"
-          onChangeText={onHandleUsernameChange}
-          value={username}
-          keyboardAppearance='dark'
-          autoFocus={true}
-        />
-        <TextInput
-          style={styles.input}
-          secureTextEntry={true}
-          onChangeText={onHandlePasswordChange}
-          value={password}
-          placeholder="Enter Password"
-          keyboardAppearance='dark'
-          autoFocus={true}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Name"
-          onChangeText={onHandleNameChange}
-          value={name}
-          keyboardAppearance='dark'
-          autoFocus={true}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onHandleEmailChange}
-          value={email}
-          placeholder="Enter Email"
-          keyboardType="email-address"
-          keyboardAppearance='dark'
-          autoFocus={true}
-        />
-        <Pressable
-          style={[styles.modalButton, styles.buttonClose]}
-          onPress={registerUser}
-        ><Text style={styles.textStyle}>Register</Text></Pressable>
+        <View style={styles.boxwithShadow}>
+          <View style={styles.titleContainer}>
+            {/* {
+              submitted ? 
+            } */}
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Username"
+              onChangeText={onHandleUsernameChange}
+              value={username}
+              keyboardAppearance='dark'
+              autoFocus={true}
+            />
+            <TextInput
+              style={styles.input}
+              secureTextEntry={true}
+              onChangeText={onHandlePasswordChange}
+              value={password}
+              placeholder="Enter Password"
+              keyboardAppearance='dark'
+              autoFocus={true}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Name"
+              onChangeText={onHandleNameChange}
+              value={name}
+              keyboardAppearance='dark'
+              autoFocus={true}
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={onHandleEmailChange}
+              value={email}
+              placeholder="Enter Email"
+              keyboardType="email-address"
+              keyboardAppearance='dark'
+              autoFocus={true}
+            />
+            <Pressable
+              style={[styles.modalButton, styles.buttonClose]}
+              onPress={registerUser}
+            ><Text style={styles.textStyle}>Register</Text></Pressable>
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -121,9 +129,9 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     backgroundColor: 'lightblue',
-    padding: 10,
+    padding: 20,
     borderRadius: 20,
-    margin: 10
+    margin: 20,
   },
   title: {
     fontSize: 25,
@@ -240,7 +248,22 @@ const styles = StyleSheet.create({
     margin: 10,
     borderColor: 'black',
     borderWidth: 1
-  }
+  },
+  titleContainer: {
+    backgroundColor: 'lightblue',
+    padding: 10,
+    borderRadius: 20,
+    margin: 10
+  },
+  boxWithShadow: {
+    borderColor: 'black',
+    borderWidth: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+    elevation: 5
+  },
 });
 
 export default RegisterScreen;
