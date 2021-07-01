@@ -7,7 +7,6 @@ import { ImageBackground, ScrollView, StyleSheet, Text, View, Modal, TextInput, 
 import { Card, Paragraph, Title, Divider } from 'react-native-paper';
 import { event } from 'react-native-reanimated';
 import Axios from 'axios';
-import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default class AddAutoTransactionModalComponent extends React.Component {
     constructor(props) {
@@ -123,10 +122,6 @@ export default class AddAutoTransactionModalComponent extends React.Component {
                         animationType="slide"
                         transparent={true}
                         visible={modalVisible}
-                    // onRequestClose={() => {
-                    //     Alert.alert("Modal has been closed.");
-                    //     this.setModalVisible(!modalVisible);
-                    // }}
                     >
                         {this.state.submitted ? (
                             <View style={styles.addCenteredView}>
@@ -170,6 +165,7 @@ export default class AddAutoTransactionModalComponent extends React.Component {
                                             placeholder="Enter Shop Name"
                                             onChangeText={this.onHandleShopNameChange}
                                         />
+                                        <DatePicker display="default" mode="date" />
                                         <TextInput
                                             style={styles.dateInput}
                                             value={this.state.autoTransactionDate}
@@ -177,17 +173,6 @@ export default class AddAutoTransactionModalComponent extends React.Component {
                                             placeholder="Enter Transaction Date (YYYY-MM_DD)"
                                             keyboard="date"
                                         />
-                                        {/* <DateTimePicker 
-                                        value = { autoTransactionDate }
-                                        mode='default'
-                                        display='default'
-                                        onChange={ autoTransactionDate => this.setState({ autoTransactionDate }) }
-                                    /> */}
-                                        {/* <TextInput
-                                        style={styles.input}
-                                        placeholder="Enter Transaction Type"
-                                        value={contactInfo.email}
-                                    /> */}
                                         <View style={styles.pickerView}>
                                             <Picker
                                                 style={styles.pickerstyles}
@@ -213,11 +198,6 @@ export default class AddAutoTransactionModalComponent extends React.Component {
                                                 <Picker.Item label="Battery" value="Battery" />
                                             </Picker>
                                         </View>
-                                        {/* <TextInput
-                                        style={styles.input}
-                                        placeholder="Enter Person"
-                                    // value={contactInfo.firstname}
-                                    /> */}
                                         <View style={styles.pickerView}>
                                             <Picker
                                                 style={styles.pickerstyles}
