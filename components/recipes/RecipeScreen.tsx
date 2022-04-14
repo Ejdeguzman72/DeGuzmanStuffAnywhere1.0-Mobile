@@ -60,5 +60,6 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         borderStyle: "solid",
+        borderRadius: 50
     }
 });

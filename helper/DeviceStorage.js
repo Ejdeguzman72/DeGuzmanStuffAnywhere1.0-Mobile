@@ -6,7 +6,6 @@ const deviceStorage = {
     saveKey(key,valueToSave) {
         try {
             AsyncStorage.setItem(key,valueToSave);
-            console.log(AsyncStorage.getItem(key.valueToSave))
         } 
 
         catch (error) {

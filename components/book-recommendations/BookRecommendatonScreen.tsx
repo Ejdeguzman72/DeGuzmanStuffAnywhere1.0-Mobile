@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { ImageBackground, Modal, StyleSheet, Text, TextInput, View, Button } from 'react-native';
-import AddBookModal from './AddBookModal';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AddBookModalComponent from './AddBookModalComponent';
 import BookList from './BookList';
 

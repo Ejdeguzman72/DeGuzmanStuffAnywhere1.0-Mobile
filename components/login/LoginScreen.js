@@ -6,13 +6,14 @@ import Axios from 'axios';
 import AsyncStorage, { useAsyncStorage } from '@react-native-community/async-storage';
 import deviceStorage from '../../helper/DeviceStorage';
 import { jwtHelper } from '../../helper/jwt';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoginScreen({ navigation }) {
 
   const jwt = jwtHelper();
   const token = "DeGuzmanStuffAnywhere_Mobile_Token";
-  const [username, setUsername] = useState("ebdegu01");
-  const [password, setPassword] = useState("Underground123!");
+  const [username, setUsername] = useState("global");
+  const [password, setPassword] = useState("global");
   const [submitted, setSubmitted] = useState(false);
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -34,11 +35,9 @@ export default function LoginScreen({ navigation }) {
     })
       .then((response) => {
         deviceStorage.saveKey(token, response.data.token);
-        console.log(AsyncStorage.getItem(token))
-        console.log(jwt)
         if (jwt) {
           Alert.alert(`${username}:  you have logged in `)
-          navigation.navigate('Home')
+          navigation.navigate('DeGuzmanStuffAnywhere')
         } else {
           Alert.alert(`Invalid Credentials`)
         }
@@ -49,7 +48,7 @@ export default function LoginScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ImageBackground source={require('../../assets/app-background.jpg')} style={styles.image} >
         <View
           style={styles.titleContainer}
@@ -94,7 +93,7 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.textStyle}>Close </Text>
         </Pressable> */}
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { View, Text, Button, StyleSheet, ImageBackground } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 function DetailsScreen() {

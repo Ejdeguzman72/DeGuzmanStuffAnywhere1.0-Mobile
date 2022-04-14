@@ -165,7 +165,7 @@ export default class AddAutoTransactionModalComponent extends React.Component {
                                             placeholder="Enter Shop Name"
                                             onChangeText={this.onHandleShopNameChange}
                                         />
-                                        <DatePicker display="default" mode="date" />
+                                        {/* <DatePicker display="default" mode="date" /> */}
                                         <TextInput
                                             style={styles.dateInput}
                                             value={this.state.autoTransactionDate}

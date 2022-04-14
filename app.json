@@ -1,7 +1,13 @@
 {
   "expo": {
     "name": "DeGuzmanStuffAnywhere Mobile",
-    "slug": "deguzmanstuffanywhere-mobile",
-    "sdkVersion": "39.0.0"
+    "slug": "deguzmanstuffanywhere_mobile",
+    "sdkVersion": "39.0.0",
+    "android": {
+      "package": "com.ejdeguzman72.deguzmanstuffanywhere_mobile"
+    },
+    "ios": {
+      "bundleIdentifier": "io.ejdeguzman.dsa"
+    }
   }
 }
